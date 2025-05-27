@@ -3,11 +3,13 @@ package com.MaxdInv.inventario.model;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 
+@Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -19,7 +21,7 @@ public class Inventario {
     @Column(length = 13, nullable = false)
     private String codigoProducto;
 
-    @Column(length = 50, nullable = false)
+    @Column(length = 100, nullable = false)
     private String nombreProducto;
 
     @Column(nullable = false)
