@@ -7,9 +7,12 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 
 @Entity
+@Table(name = "inventario")
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -19,10 +22,10 @@ public class Inventario {
     private int id;
 
     @Column(length = 13, nullable = false)
-    private String codigoProducto;
+    private String codigoproducto;
 
     @Column(length = 100, nullable = false)
-    private String nombreProducto;
+    private String nombreproducto;
 
     @Column(nullable = false)
     private int cantidad;

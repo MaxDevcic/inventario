@@ -13,36 +13,27 @@ public class InventarioService {
     @Autowired
     private InventarioRepository inventarioRepository;
 
-    public Inventario guardar(Inventario inventario){
-        return inventarioRepository.create(inventario);
+    public Inventario findAllByIdAndCodigoproducto(int id, String codproducto){
+        return inventarioRepository.findAllByIdAndCodigoproducto(id, codproducto);
+    }
+
+    public List<Inventario> findAll() {
+        return inventarioRepository.findAll();
+    }
+
+    public Inventario save(Inventario inventario) {
+        return inventarioRepository.save(inventario);
+    }
+
+    public List<Inventario> findAllById(int id) {
+        return inventarioRepository.findAllById(id);
+    }
+
+    public Inventario nuevaCant(Inventario inventarionuevo, int cantidad) {
+        int cantidadAnterior = inventarionuevo.getCantidad();
+        inventarionuevo.setCantidad(cantidad+cantidadAnterior);
+        return inventarioRepository.save(inventarionuevo);
+    }
+
     
-    }
-
-    public List<Inventario> listartodas(){
-        return inventarioRepository.readAll();
-    }
-
-    public Inventario buscarporid(int id) {
-        return inventarioRepository.read(id);
-    }
-
-    public Inventario modificarInventario(int id, Inventario inventariomod)
-    {
-        return inventarioRepository.update(id, inventariomod);
-    }
-
-    public Inventario aumentarInventario(int id, String cod, Inventario inventariomod, int cantalt)
-    {
-        return inventarioRepository.aumentarCantidad(id, cod, inventariomod, cantalt);
-    }
-
-    public String eliminarInventario(int id)
-    {
-        inventarioRepository.delete(id);
-        return "Inventario eliminada";
-    }
-
-    public Inventario buscarporrut(String code) {
-        return inventarioRepository.readbycodigo(code);
-    }
 }
