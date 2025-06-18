@@ -13,8 +13,8 @@ public class InventarioService {
     @Autowired
     private InventarioRepository inventarioRepository;
 
-    public Inventario findAllByIdAndCodigoproducto(int id, String codproducto){
-        return inventarioRepository.findAllByIdAndCodigoproducto(id, codproducto);
+    public Inventario findByIdAndCodigoproducto(Long id, Long codproducto){
+        return inventarioRepository.findByIdAndCodigoproducto(id, codproducto);
     }
 
     public List<Inventario> findAll() {
@@ -25,7 +25,7 @@ public class InventarioService {
         return inventarioRepository.save(inventario);
     }
 
-    public List<Inventario> findAllById(int id) {
+    public List<Inventario> findAllById(Long id) {
         return inventarioRepository.findAllById(id);
     }
 

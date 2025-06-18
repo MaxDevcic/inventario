@@ -8,11 +8,11 @@ import org.springframework.stereotype.Repository;
 import com.MaxdInv.inventario.model.Inventario;
 
 @Repository
-public interface InventarioRepository extends JpaRepository<Inventario,Long>{
+public interface InventarioRepository extends JpaRepository<Inventario,Integer>{
     
-    Inventario findAllByIdAndCodigoproducto(int id, String codproducto);
+    Inventario findByIdAndCodigoproducto(Long id, Long codproducto);
 
-    List<Inventario> findAllById(int id);
+    List<Inventario> findAllById(Long id);
 
     List<Inventario> findAll();
 

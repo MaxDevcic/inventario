@@ -25,7 +25,7 @@ public class InventarioController {
 
     @PostMapping("/{id}")
     public ResponseEntity<Inventario> postInventario(@RequestBody Inventario inventario) {
-        Inventario buscado = inventarioService.findAllByIdAndCodigoproducto(inventario.getId(),inventario.getCodigoproducto());
+        Inventario buscado = inventarioService.findByIdAndCodigoproducto(inventario.getId(),inventario.getCodigoproducto());
         if (buscado == null) {
             return new ResponseEntity<>(inventarioService.save(inventario), HttpStatus.CREATED);
         }
@@ -35,8 +35,8 @@ public class InventarioController {
     }
 
     @PutMapping("/{id}/{codprod}/cantidad")
-    public ResponseEntity<Inventario> putInventario(@PathVariable int id, String codprod,@RequestBody int cantidad) {
-        Inventario buscado = inventarioService.findAllByIdAndCodigoproducto(id, codprod);
+    public ResponseEntity<Inventario> putInventario(@PathVariable Long id, Long codprod,@RequestBody int cantidad) {
+        Inventario buscado = inventarioService.findByIdAndCodigoproducto(id, codprod);
         if (buscado != null) {
             return new ResponseEntity<>(inventarioService.nuevaCant(buscado,cantidad), HttpStatus.OK);
         }
@@ -56,7 +56,7 @@ public class InventarioController {
     }
     
     @GetMapping("/{id}")
-    public ResponseEntity<List<Inventario>> getSome(@PathVariable int id){
+    public ResponseEntity<List<Inventario>> getSome(@PathVariable Long id){
         List<Inventario> inventariosEncontrados = inventarioService.findAllById(id);
         if(!inventariosEncontrados.isEmpty()){
             return new ResponseEntity<>(inventariosEncontrados, HttpStatus.OK);

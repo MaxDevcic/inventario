@@ -19,14 +19,13 @@ import lombok.AllArgsConstructor;
 public class Inventario {
     @Id
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
-    @Column(length = 13, nullable = false)
-    private String codigoproducto;
+    @Column(nullable = false)
+    private Long codigoproducto;
 
     @Column(length = 100, nullable = false)
     private String nombreproducto;
 
-    @Column(nullable = false)
     private int cantidad;
 }
