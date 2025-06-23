@@ -23,7 +23,7 @@ public class InventarioController {
     @Autowired
     private InventarioService inventarioService;
 
-    @PostMapping("/{id}")
+    @PostMapping()
     public ResponseEntity<Inventario> postInventario(@RequestBody Inventario inventario) {
         Inventario buscado = inventarioService.findByIdAndCodigoproducto(inventario.getId(),inventario.getCodigoproducto());
         if (buscado == null) {
